@@ -20,7 +20,7 @@ jobs:
 
       # Step 2: Set up Podman
       - name: Set up Podman
-        uses: redhat-actions/podman-login@v3
+        uses: redhat-actions/podman-login@v1
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
