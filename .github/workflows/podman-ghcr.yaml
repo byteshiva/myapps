@@ -25,25 +25,30 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      
+      # Step 3: Clear Podman Cache
+      - name: Clear Podman Cache
+        run: |
+          podman system prune -a -f
 
-      # Step 3: Build the container image
+      # Step 4: Build the container image
       - name: Build Container Image
         run: |
           podman build -t ghcr.io/${{ github.repository_owner }}/podman-ghcr-automation:latest .
         env:
           PODMAN_LOG_LEVEL: debug
 
-      # Step 4: Tag the image (optional but recommended for versioning)
+      # Step 5: Tag the image (optional but recommended for versioning)
       - name: Tag Image
         run: |
           podman tag ghcr.io/${{ github.repository_owner }}/podman-ghcr-automation:latest ghcr.io/${{ github.repository_owner }}/podman-ghcr-automation:${{ github.sha }}
 
-      # Step 5: Push the image to GHCR
+      # Step 6: Push the image to GHCR
       - name: Push Image to GHCR
         run: |
           podman push ghcr.io/${{ github.repository_owner }}/podman-ghcr-automation:latest
           podman push ghcr.io/${{ github.repository_owner }}/podman-ghcr-automation:${{ github.sha }}
 
-      # Step 6: Verify the image (optional)
+      # Step 7: Verify the image (optional)
       - name: List Images
         run: podman images
