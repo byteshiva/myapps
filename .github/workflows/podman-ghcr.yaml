@@ -47,7 +47,6 @@ jobs:
       - name: Push Image to GHCR
         run: |
           podman push ghcr.io/${{ github.repository_owner }}/podman-ghcr-automation:latest
-          podman push ghcr.io/${{ github.repository_owner }}/podman-ghcr-automation:${{ github.sha }}
 
       # Step 7: Verify the image (optional)
       - name: List Images
