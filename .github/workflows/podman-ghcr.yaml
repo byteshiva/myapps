@@ -30,6 +30,8 @@ jobs:
       - name: Build Container Image
         run: |
           podman build -t ghcr.io/${{ github.repository_owner }}/podman-ghcr-automation:latest .
+        env:
+          PODMAN_LOG_LEVEL: debug
 
       # Step 4: Tag the image (optional but recommended for versioning)
       - name: Tag Image
