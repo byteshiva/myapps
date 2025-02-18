@@ -25,5 +25,5 @@ The included workflow automates the following steps:
 ## Getting Started
 1. **Fork or Clone this Repository**:
    ```bash
-   git clone https://github.com/byteshiva/myapps.git
-   cd myapps
+   git clone https://github.com/byteshiva/podman-ghcr-automation.git
+   cd podman-ghcr-automation
